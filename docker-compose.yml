@@ -1,0 +1,14 @@
+version: "3"
+services:
+  web:
+    image: example-integration-web:test
+    ports:
+      - "3000:443"
+    env_file:
+      - web/.env
+  server:
+    image: example-integration-server:test
+    ports:
+      - "8001:8001"
+    env_file:
+      - server/.env
