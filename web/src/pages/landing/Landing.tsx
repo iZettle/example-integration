@@ -35,6 +35,8 @@ function Landing() {
       <ButtonGroup spacing="6">
         <Button
           colorScheme="blue"
+          backgroundColor="midnightblue"
+          textColor="white"
           isLoading={user.isLoading}
           onClick={() => onButtonClick()}
         >
