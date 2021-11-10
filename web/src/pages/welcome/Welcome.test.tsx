@@ -1,26 +1,74 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { createMemoryHistory } from "history";
+import { setLogger } from "react-query";
 import { Router } from "react-router-dom";
+import { setupServer } from "msw/node";
+import { ResponseComposition, rest, RestContext, RestRequest } from "msw";
+import { createMemoryHistory } from "history";
 
 import Welcome from "./Welcome";
 import TestWrapper from "../../testing/test-wrapper";
+import { User } from "../../data/user";
 
-test("redirects when user is missing", () => {
+const testUser: User = { organizationUuid: "foo", displayName: "bar" };
+const serverMeEndpoint = "https://localhost:8001/v1/me";
+
+const server = setupServer();
+
+beforeAll(() => {
+  server.listen();
+  setLogger({
+    log: () => {},
+    warn: () => {},
+    error: () => {},
+  });
+});
+
+afterEach(() => server.resetHandlers());
+
+afterAll(() => {
+  server.close();
+});
+
+test("redirects when user request errors", async () => {
   const history = createMemoryHistory();
+  history.replace = jest.fn();
+
+  Object.defineProperty(window, "location", {
+    writable: true,
+    value: { assign: jest.fn() },
+  });
+
+  server.use(
+    rest.get(
+      serverMeEndpoint,
+      (req: RestRequest, res: ResponseComposition, ctx: RestContext) => {
+        return res(ctx.status(500), ctx.json("error"));
+      }
+    )
+  );
+
   render(
     <Router history={history}>
       <Welcome />
     </Router>,
     { wrapper: TestWrapper }
   );
-  expect(history.location.pathname).toBe("/");
+
+  await waitFor(() => {
+    expect(history.replace).toHaveBeenCalledWith("/");
+  });
 });
 
-test("renders user passed by state", async () => {
+test("renders user from request", async () => {
   const history = createMemoryHistory();
-  history.location.state = {
-    user: { organizationUuid: "foo", displayName: "bar" },
-  };
+
+  server.use(
+    rest.get(
+      serverMeEndpoint,
+      (req: RestRequest, res: ResponseComposition, ctx: RestContext) =>
+        res(ctx.json(testUser))
+    )
+  );
 
   render(
     <Router history={history}>

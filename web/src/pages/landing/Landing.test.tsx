@@ -74,9 +74,7 @@ test("button click requests user data", async () => {
     expect(getSpy).toHaveBeenCalledWith(serverMeEndpoint, {
       withCredentials: true,
     });
-    expect(history.replace).toHaveBeenCalledWith("/welcome", {
-      user: testUser,
-    });
+    expect(history.replace).toHaveBeenCalledWith("/welcome");
   });
 });
 

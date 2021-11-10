@@ -20,7 +20,7 @@ function Landing() {
         if (result.error) {
           return Promise.reject(result.error);
         }
-        history.replace("/welcome", { user: result.data });
+        history.replace("/welcome");
       })
       .catch((e: AxiosError) => {
         if (e.response?.status === 401) {
