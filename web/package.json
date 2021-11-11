@@ -18,7 +18,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
-    "yarn": "^1.22.11"
+    "yarn": "^1.22.17"
   },
   "scripts": {
     "start": "HTTPS=true SSL_CRT_FILE=./.cert/localhost.pem SSL_KEY_FILE=./.cert/localhost.key react-scripts start",
