@@ -1,0 +1,54 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/server/app"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Stockholm"
+    labels:
+      - "Lights On"
+      - "dependencies"
+    reviewers:
+      - "iZettle/partner-growth"
+
+  - package-ecosystem: "npm"
+    directory: "/web"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Stockholm"
+    labels:
+      - "Lights On"
+      - "dependencies"
+    reviewers:
+      - "iZettle/partner-growth"
+
+  - package-ecosystem: "docker"
+    directory: "/server"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Stockholm"
+    labels:
+      - "Lights On"
+      - "dependencies"
+    reviewers:
+      - "iZettle/partner-growth"
+
+  - package-ecosystem: "docker"
+    directory: "/web"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Stockholm"
+    labels:
+      - "Lights On"
+      - "dependencies"
+    reviewers:
+      - "iZettle/partner-growth"
