@@ -10,7 +10,7 @@ updates:
       timezone: "Europe/Stockholm"
     labels:
       - "Lights On"
-      - "dependencies"
+      - "Dependencies"
     reviewers:
       - "iZettle/partner-growth"
 
@@ -23,7 +23,7 @@ updates:
       timezone: "Europe/Stockholm"
     labels:
       - "Lights On"
-      - "dependencies"
+      - "Dependencies"
     reviewers:
       - "iZettle/partner-growth"
 
@@ -36,7 +36,7 @@ updates:
       timezone: "Europe/Stockholm"
     labels:
       - "Lights On"
-      - "dependencies"
+      - "Dependencies"
     reviewers:
       - "iZettle/partner-growth"
 
@@ -49,6 +49,6 @@ updates:
       timezone: "Europe/Stockholm"
     labels:
       - "Lights On"
-      - "dependencies"
+      - "Dependencies"
     reviewers:
       - "iZettle/partner-growth"
