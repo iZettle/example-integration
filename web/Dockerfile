@@ -1,4 +1,4 @@
-FROM nginx:1.21.0
+FROM nginx:1.21.4
 
 WORKDIR /usr/share/nginx/html
 
