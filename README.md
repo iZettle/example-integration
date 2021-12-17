@@ -1,5 +1,6 @@
 # Zettle Example Integration
 
+- [Supported regions](#supported-regions)
 - [Introduction](#introduction) 
   - [Structure](#structure)
 - [Prerequisites](#prerequisites)
@@ -8,6 +9,27 @@
   - [Step 2: Running via Docker](#step-2-running-via-docker)
 - [Subprojects](#subprojects)
 - [Certificates](#certificates)
+
+## Supported regions
+
+Zettle provides APIs for you to integrate Zettle Go with your services.
+
+> **Note:** The API documentation is currently in the beta phase.
+
+Currently, Zettle provides APIs for the following markets:
+
+-   United Kingdom
+-   Sweden
+-   Brazil
+-   Norway
+-   Denmark
+-   Finland
+-   Germany
+-   Mexico
+-   Netherlands
+-   France
+-   Spain
+-   Italy
 
 ## Introduction
 
