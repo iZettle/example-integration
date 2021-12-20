@@ -17,7 +17,7 @@ class ZettleUserFetcher(
 
     override suspend fun fetchMe(accessToken: String): Result<ZettleUserResponse> {
         val url = baseUrl.newBuilder()
-            .addPathSegments("users/me")
+            .addPathSegments("users/self")
             .build()
         val request = Request.Builder()
             .get()
