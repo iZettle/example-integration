@@ -38,7 +38,7 @@ class ZettleUserFetcherTests {
 
         val sentRequest = mockSender.spySendRequest
             ?: fail("expected a sent request")
-        val expectedUrl = "https://test.local/users/me"
+        val expectedUrl = "https://test.local/users/self"
         assertEquals(expectedUrl, sentRequest.url.toString())
         assertEquals("GET", sentRequest.method)
         assertEquals("Bearer test token", sentRequest.header(HttpHeaders.Authorization))
