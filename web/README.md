@@ -23,8 +23,7 @@ If you would like to run the project with Docker, follow the instructions on the
 Runs the app in the development mode. Prior to doing this, you will need to do a few bits of housekeeping:
 
 - Re-name `.env.example` to `.env`. This file contains some basic settings for easy local development.
-- The `REACT_APP_ZETTLE_OAUTH_CLIENT_ID` value should be set to the ID generated on the Zettle developer portal. Ensure
-that you also add `https://localhost:8001/auth/redirect` to your OAuth Redirect URIs within [developer.zettle.com](https://developer.zettle.com).
+- Ensure that you add `https://localhost:8001/auth/redirect` to your OAuth Redirect URIs within [developer.zettle.com](https://developer.zettle.com).
 
 - Prior to the first use of the app you should also run the `create-certificate.sh` script in the main project directory.
 For more detail [see here](../README.md#certificates).
