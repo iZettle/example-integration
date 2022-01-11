@@ -11,11 +11,6 @@ import Welcome from "./pages/welcome/Welcome";
 
 const queryClient = new QueryClient();
 
-const environment = process.env;
-if (!environment.REACT_APP_ZETTLE_OAUTH_CLIENT_ID) {
-  throw Error("Please set REACT_APP_ZETTLE_OAUTH_CLIENT_ID in your env file");
-}
-
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
