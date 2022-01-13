@@ -2,10 +2,10 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.0"
-    kotlin("plugin.serialization") version "1.6.0"
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
-    id("com.github.johnrengelman.shadow") version "7.1.0"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
     application
 }
 
@@ -16,7 +16,7 @@ repositories {
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation(platform("io.ktor:ktor-bom:1.6.5"))
+    implementation(platform("io.ktor:ktor-bom:1.6.7"))
     implementation("io.ktor:ktor-server-core")
     implementation("io.ktor:ktor-server-netty")
     implementation("io.ktor:ktor-serialization")
