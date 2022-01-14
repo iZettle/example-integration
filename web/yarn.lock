@@ -2162,17 +2162,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jest/types@^27.1.1":
-  version "27.1.1"
-  resolved "https://registry.yarnpkg.com/@jest/types/-/types-27.1.1.tgz#77a3fc014f906c65752d12123a0134359707c0ad"
-  integrity sha512-yqJPDDseb0mXgKqmNqypCsb85C22K1aY5+LUxh7syIM9n/b0AsaltxNy+o6tt29VcfGDpYEve175bm3uOhcehA==
-  dependencies:
-    "@types/istanbul-lib-coverage" "^2.0.0"
-    "@types/istanbul-reports" "^3.0.0"
-    "@types/node" "*"
-    "@types/yargs" "^16.0.0"
-    chalk "^4.0.0"
-
 "@mswjs/cookies@^0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@mswjs/cookies/-/cookies-0.1.6.tgz#176f77034ab6d7373ae5c94bcbac36fee8869249"
@@ -2594,10 +2583,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*", "@types/jest@^27.0.1":
-  version "27.0.2"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-27.0.2.tgz#ac383c4d4aaddd29bbf2b916d8d105c304a5fcd7"
-  integrity sha512-4dRxkS/AFX0c5XW6IPMNOydLn2tEhNhJV7DnYK+0bjoJZ+QTmfucBlihX7aoEsh/ocYtkLC73UbnBXBXIxsULA==
+"@types/jest@*", "@types/jest@^27.4.0":
+  version "27.4.0"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-27.4.0.tgz#037ab8b872067cae842a320841693080f9cb84ed"
+  integrity sha512-gHl8XuC1RZ8H2j5sHv/JqsaxXkDDM9iDOgu0Wp8sjs4u/snb2PVehyWXJPr+ORA0RPpgw231mnutWI1+0hgjIQ==
   dependencies:
     jest-diff "^27.0.0"
     pretty-format "^27.0.0"
@@ -2796,13 +2785,6 @@
   version "15.0.14"
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-15.0.14.tgz#26d821ddb89e70492160b66d10a0eb6df8f6fb06"
   integrity sha512-yEJzHoxf6SyQGhBhIYGXQDSCkJjB6HohDShto7m8vaKg9Yp0Yn8+71J9eakh2bnPg6BfsH9PRMhiRTZnd4eXGQ==
-  dependencies:
-    "@types/yargs-parser" "*"
-
-"@types/yargs@^16.0.0":
-  version "16.0.4"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-16.0.4.tgz#26aad98dd2c2a38e421086ea9ad42b9e51642977"
-  integrity sha512-T8Yc9wt/5LbJyCaLiHPReJa0kApcIgJ7Bn735GjItUfh08Z1pJvu8QZqb9s+mMvKV6WUQRV7K2R46YbjMXTTJw==
   dependencies:
     "@types/yargs-parser" "*"
 
@@ -10223,17 +10205,7 @@ pretty-format@^26.6.0, pretty-format@^26.6.2:
     ansi-styles "^4.0.0"
     react-is "^17.0.1"
 
-pretty-format@^27.0.0, pretty-format@^27.2.0:
-  version "27.2.0"
-  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-27.2.0.tgz#ee37a94ce2a79765791a8649ae374d468c18ef19"
-  integrity sha512-KyJdmgBkMscLqo8A7K77omgLx5PWPiXJswtTtFV7XgVZv2+qPk6UivpXXO+5k6ZEbWIbLoKdx1pZ6ldINzbwTA==
-  dependencies:
-    "@jest/types" "^27.1.1"
-    ansi-regex "^5.0.0"
-    ansi-styles "^5.0.0"
-    react-is "^17.0.1"
-
-pretty-format@^27.0.2:
+pretty-format@^27.0.0, pretty-format@^27.0.2, pretty-format@^27.2.0:
   version "27.4.6"
   resolved "https://artifactory.g.devqa.gcp.dev.paypalinc.com/artifactory/api/npm/npm-all/pretty-format/-/pretty-format-27.4.6.tgz#1b784d2f53c68db31797b2348fa39b49e31846b7"
   integrity sha1-G3hNL1PGjbMXl7I0j6ObSeMYRrc=
