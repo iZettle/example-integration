@@ -63,7 +63,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest-junit": "^12.2.0",
     "msw": "^0.34.0",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.1",
     "typescript": "^4.3.5"
   },
   "resolutions": {
