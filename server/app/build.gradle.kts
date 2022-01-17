@@ -23,7 +23,7 @@ dependencies {
     implementation("io.ktor:ktor-auth")
     implementation("io.ktor:ktor-server-sessions")
     implementation("io.ktor:ktor-network-tls-certificates")
-    implementation("org.slf4j:slf4j-simple:1.7.32")
+    implementation("org.slf4j:slf4j-simple:1.7.33")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
     implementation("com.squareup.okhttp3:okhttp")
 
