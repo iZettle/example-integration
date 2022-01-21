@@ -8,6 +8,7 @@ import server.client.zettle.MockDecoding
 import server.client.zettle.MockRequestSending
 import server.extension.uuidOne
 import server.extension.uuidTwo
+import server.makeRequest
 import server.makeResponse
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -47,7 +48,7 @@ class ZettleUserFetcherTests {
     @Test
     fun `successful response from zettle auth is decoded and returned`() = runBlocking {
         mockSender.stubSend = Result.success(
-            makeResponse(url = baseUrl, code = 200)
+            makeResponse(code = 200, request = makeRequest())
         )
         val stubResponse = ZettleUserResponse(
             uuid = uuidOne(),
@@ -63,7 +64,7 @@ class ZettleUserFetcherTests {
     @Test
     fun `a 401 from zettle auth results in NotAuthorisedException`() = runBlocking {
         mockSender.stubSend = Result.success(
-            makeResponse(url = baseUrl, code = 401)
+            makeResponse(code = 401, request = makeRequest())
         )
 
         val result = sut.fetchMe("")
@@ -74,7 +75,7 @@ class ZettleUserFetcherTests {
     @Test
     fun `any other error from zettle auth returns a runtime exception`() = runBlocking {
         mockSender.stubSend = Result.success(
-            makeResponse(url = baseUrl, code = 456)
+            makeResponse(code = 456, request = makeRequest())
         )
 
         val result = sut.fetchMe("")
@@ -86,7 +87,7 @@ class ZettleUserFetcherTests {
     @Test
     fun `malformed response from zettle auth returns an exception`() = runBlocking {
         mockSender.stubSend = Result.success(
-            makeResponse(url = baseUrl, code = 200)
+            makeResponse(code = 200, request = makeRequest())
         )
         val stubResponse = "invalid json"
         mockDecoder.stubDecode = stubResponse

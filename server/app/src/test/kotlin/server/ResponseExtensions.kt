@@ -1,5 +1,7 @@
 package server
 
+import io.ktor.http.*
+import io.ktor.http.auth.*
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.MediaType.Companion.toMediaType
@@ -10,12 +12,14 @@ import okhttp3.ResponseBody
 import okhttp3.ResponseBody.Companion.toResponseBody
 
 fun makeResponse(
-    url: HttpUrl = "https://test.local".toHttpUrl(),
     code: Int = 200,
-    body: ResponseBody? = "".toResponseBody(contentType = "application/json".toMediaType())
+    body: ResponseBody? = "".toResponseBody(contentType = "application/json".toMediaType()),
+    request: Request = Request.Builder().url("https://test.local".toHttpUrl()).build(),
+    priorResponse: Response? = null
 ): Response {
     return Response.Builder()
-        .request(Request.Builder().url(url).build())
+        .request(request)
+        .priorResponse(priorResponse)
         .protocol(Protocol.HTTP_1_0)
         .message("")
         .code(code)

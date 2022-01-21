@@ -58,6 +58,7 @@ class ZettleTokenRefreshAuthenticator(
                 refreshToken = newSession.refreshToken,
                 accessTokenExpiresAt = expiresAt
             )
+            // todo: Is this correct? Not storing by the original access token?
             val storeResult = accessTokenStore.storeByAccessToken(
                 accessToken = newSession.accessToken,
                 credentials = credentials
@@ -67,9 +68,9 @@ class ZettleTokenRefreshAuthenticator(
                 return null
             }
 
+            // todo: Note change to replace header – now less explicit, though?
             return originalRequest.newBuilder()
-                .removeHeader(HttpHeaders.Authorization)
-                .addHeader(HttpHeaders.Authorization, "Bearer ${credentials.accessToken}")
+                .header(HttpHeaders.Authorization, "Bearer ${credentials.accessToken}")
                 .build()
         }
     }
