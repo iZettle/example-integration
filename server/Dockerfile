@@ -1,4 +1,4 @@
-FROM openjdk:17.0.1-slim
+FROM openjdk:17.0.2-slim
 EXPOSE 8001
 RUN mkdir /app
 WORKDIR /app
