@@ -13,6 +13,7 @@ fi
 echo "Generating new TLS certificate for localhost"
 
 brew list mkcert || (brew install mkcert && echo "mkcert will ask for permission to install a new certificate authority on your system")
+brew list nss || (brew install nss && echo "Installing nss for mkcert Firefox integration")
 mkcert -install
 mkdir -p .cert
 mkcert -key-file $KEY -cert-file $CERT "localhost"
