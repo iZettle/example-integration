@@ -16,7 +16,7 @@ repositories {
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation(platform("io.ktor:ktor-bom:1.6.7"))
+    implementation(platform("io.ktor:ktor-bom:2.0.1"))
     implementation("io.ktor:ktor-server-core")
     implementation("io.ktor:ktor-server-netty")
     implementation("io.ktor:ktor-serialization")
