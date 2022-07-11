@@ -49,9 +49,16 @@ class OAuthGrantRedirectRouteHandler(
             return call.respond(HttpStatusCode.BadRequest)
         }
 
-        val exchangeResponse = grantExchanger.exchange(
+        val exchangeTokenResponse = grantExchanger.exchange(
             codeGrant = codeGrant,
             state = state
+        ).getOrElse {
+            logger.error("failed to exchange code grant", it)
+            return call.respond(HttpStatusCode.InternalServerError)
+        }
+
+        val exchangeResponse = grantExchanger.exchangeRefreshToken(
+            refreshToken = exchangeTokenResponse.refreshToken
         ).getOrElse {
             logger.error("failed to exchange code grant", it)
             return call.respond(HttpStatusCode.InternalServerError)

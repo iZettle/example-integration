@@ -82,6 +82,33 @@ class ZettleCodeGrantExchangerTests {
     }
 
     @Test
+    fun `successful response from zettle refresh token request is decoded and returned`() = runBlocking {
+        mockSender.stubSend = Result.success(
+            makeResponse(url = baseUrl, code = 200)
+        )
+        val stubResponse = ZettleCodeGrantExchangeResponse(
+            accessToken = "access token",
+            refreshToken = "refresh token",
+            expiresInSeconds = 1234
+        )
+        mockDecoder.stubDecode = stubResponse
+
+        val result = sut.exchange("code grant", "state")
+        assertEquals(result.getOrNull(), stubResponse)
+
+        val refreshTokenStubResponse = ZettleCodeGrantExchangeResponse(
+            accessToken = "access token from refresh",
+            refreshToken = "new refresh token",
+            expiresInSeconds = 1234
+        )
+
+        mockDecoder.stubDecode = refreshTokenStubResponse
+        val resultRefreshToken = sut.exchangeRefreshToken(stubResponse.refreshToken)
+        assertEquals(resultRefreshToken.getOrNull(), refreshTokenStubResponse)
+
+    }
+
+    @Test
     fun `an error from zettle auth returns a runtime exception`() = runBlocking {
         mockSender.stubSend = Result.success(
             makeResponse(url = baseUrl, code = 456)

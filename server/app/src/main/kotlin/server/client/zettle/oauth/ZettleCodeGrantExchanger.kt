@@ -6,6 +6,7 @@ import okhttp3.Request
 import server.client.http.Decoding
 import server.client.http.HttpRequestSending
 import server.client.http.decode
+import server.logger
 
 class ZettleCodeGrantExchanger(
     private val baseUrl: HttpUrl,
@@ -15,6 +16,8 @@ class ZettleCodeGrantExchanger(
     private val clientId: String,
     private val clientSecret: String
 ) : ZettleCodeGrantExchanging {
+
+    private val logger = server.logger<ZettleCodeGrantExchanger>()
 
     override suspend fun exchange(
         codeGrant: String,
@@ -48,5 +51,40 @@ class ZettleCodeGrantExchanger(
             ?: return Result.failure(RuntimeException("expected a response body"))
 
         return decoder.decode(responseBody)
+    }
+
+    override suspend fun exchangeRefreshToken(
+        refreshToken: String
+    ): Result<ZettleCodeGrantExchangeResponse> {
+        val url = baseUrl.newBuilder()
+            .addPathSegments("token")
+            .build()
+        val requestBody = FormBody.Builder()
+            .add("grant_type", "refresh_token")
+            .add("refresh_token", refreshToken)
+            .add("client_secret", clientSecret)
+            .add("client_id", clientId)
+            .build()
+        val request = Request.Builder()
+            .url(url)
+            .post(requestBody)
+            .build()
+
+        val response = requestSending.send(request).getOrElse {
+            return Result.failure(it)
+        }
+
+        logger.info("Response refresh token: ${response.isSuccessful}")
+
+        if (!response.isSuccessful) {
+            return Result.failure(RuntimeException("unexpected response code: ${response.code}"))
+        }
+
+        @Suppress("BlockingMethodInNonBlockingContext")
+        val responseBody = response.body?.string()
+            ?: return Result.failure(RuntimeException("expected a response body"))
+
+        return decoder.decode(responseBody)
+
     }
 }

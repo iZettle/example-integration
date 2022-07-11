@@ -6,4 +6,9 @@ interface ZettleCodeGrantExchanging {
         codeGrant: String,
         state: String
     ): Result<ZettleCodeGrantExchangeResponse>
+
+    suspend fun exchangeRefreshToken(
+        refreshToken: String
+    ): Result<ZettleCodeGrantExchangeResponse>
+
 }
