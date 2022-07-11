@@ -32,7 +32,7 @@ function Welcome() {
       <Heading>Welcome</Heading>
       <Box alignContent="left" width="50%">
         <Text>Org id: {user.data.organizationUuid}</Text>
-        <Text>Display name: {user.data.displayName}</Text>
+        <Text>Uuid: {user.data.uuid}</Text>
       </Box>
     </VStack>
   );
