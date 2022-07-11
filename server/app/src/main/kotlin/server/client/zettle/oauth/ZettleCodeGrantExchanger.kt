@@ -6,7 +6,6 @@ import okhttp3.Request
 import server.client.http.Decoding
 import server.client.http.HttpRequestSending
 import server.client.http.decode
-import server.logger
 
 class ZettleCodeGrantExchanger(
     private val baseUrl: HttpUrl,
