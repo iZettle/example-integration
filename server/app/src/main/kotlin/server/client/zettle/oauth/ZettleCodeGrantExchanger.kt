@@ -17,8 +17,6 @@ class ZettleCodeGrantExchanger(
     private val clientSecret: String
 ) : ZettleCodeGrantExchanging {
 
-    private val logger = server.logger<ZettleCodeGrantExchanger>()
-
     override suspend fun exchange(
         codeGrant: String,
         state: String
@@ -73,8 +71,6 @@ class ZettleCodeGrantExchanger(
         val response = requestSending.send(request).getOrElse {
             return Result.failure(it)
         }
-
-        logger.info("Response refresh token: ${response.isSuccessful}")
 
         if (!response.isSuccessful) {
             return Result.failure(RuntimeException("unexpected response code: ${response.code}"))
