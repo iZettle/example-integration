@@ -1,7 +1,7 @@
 # Zettle Example Integration
 
 - [Supported regions](#supported-regions)
-- [Introduction](#introduction) 
+- [Introduction](#introduction)
   - [Structure](#structure)
 - [Prerequisites](#prerequisites)
 - [Instructions](#instructions)
@@ -18,18 +18,18 @@ Zettle provides APIs for you to integrate Zettle Go with your services.
 
 Currently, Zettle provides APIs for the following markets:
 
--   United Kingdom
--   Sweden
--   Brazil
--   Norway
--   Denmark
--   Finland
--   Germany
--   Mexico
--   Netherlands
--   France
--   Spain
--   Italy
+- United Kingdom
+- Sweden
+- Brazil
+- Norway
+- Denmark
+- Finland
+- Germany
+- Mexico
+- Netherlands
+- France
+- Spain
+- Italy
 
 ## Introduction
 
@@ -50,50 +50,62 @@ This repository contains everything integrators need to run the project in one p
 The first version is designed to be run on macOS (we assume the presence of `brew`), but could be extended to run on other operating systems too, if there's demand.
 
 ## Prerequisites
+
 * You have an account for the [Developer Portal](https://developer.zettle.com/). If you don't have an account, [sign up for a developer account](https://developer.zettle.com/register).
 * You have API credentials for the app. If you don't have any, [get API credentials for authorisation code grant](https://developer.zettle.com/applications/create/public).
+* Note: Use following values when you register your API credentials
+  * Oauth Redirect URIs: `https://localhost:8001/auth/redirect`
+  * App URL: `https://localhost:3000/welcome`
 
 ## Instructions
 
 ### Step 1: Environment variables
+
 Prepare environment variables in each subproject, so that the example app can use your developer credentials.
 
 #### Server
+
 * Copy `/server/.env.example` to `/server/.env`
 * Modify the variables that say `CHANGE_ME` to your own details
 
 Detailed description of the variables and what they do:
 
-| Environment Variable| Value | Notes |
-|----|-----|----|
-| ZETTLE_OAUTH_BASE_URL | `https://oauth.zettle.com` | |
-| ZETTLE_OAUTH_CLIENT_ID | UUID string | The client ID of your public app |
-| ZETTLE_OAUTH_CLIENT_SECRET | String | The client secret for your public app |
+
+| Environment Variable       | Value                      | Notes                                 |
+| ---------------------------- | ---------------------------- | --------------------------------------- |
+| ZETTLE_OAUTH_BASE_URL      | `https://oauth.zettle.com` |                                       |
+| ZETTLE_OAUTH_CLIENT_ID     | UUID string                | The client ID of your public app      |
+| ZETTLE_OAUTH_CLIENT_SECRET | String                     | The client secret for your public app |
 
 #### Web
+
 * Copy `/web/.env.example` to `/web/.env`
 * You don't need to change anything in this file
 
 Detailed description of the variables and what they do:
 
-| Environment Variable| Value | Notes |
-|----|-----|----|
-| HTTPS | Boolean | Required to be true to use Zettle auth |
-| SSL_CRT_FILE | File path string | For development server use |
-| SSL_KEY_FILE | File path string | For development server use |
-| DISABLE_ESLINT_PLUGIN | Boolean | Set to false to enforce lint/format rules |
-| REACT_APP_SERVER_URL | URL:PORT string | Change this if you run the server at a different address |
+
+| Environment Variable  | Value            | Notes                                                    |
+| ----------------------- | ------------------ | ---------------------------------------------------------- |
+| HTTPS                 | Boolean          | Required to be true to use Zettle auth                   |
+| SSL_CRT_FILE          | File path string | For development server use                               |
+| SSL_KEY_FILE          | File path string | For development server use                               |
+| DISABLE_ESLINT_PLUGIN | Boolean          | Set to false to enforce lint/format rules                |
+| REACT_APP_SERVER_URL  | URL:PORT string  | Change this if you run the server at a different address |
 
 ### Step 2: Running via Docker
+
 To start both the server and web frontend you can execute the `./docker-run.sh` script in the root of this repository.
 
 This script:
+
 * Creates necessary self-signed TLS certificates
 * Builds the web app
 * Builds the server app
 * Runs both in Docker containers
 
 You should see that Docker has run both containers when the script finishes, like so:
+
 ```
 + docker compose up -d
 [+] Running 2/2
@@ -111,6 +123,7 @@ If you encounter problems running the project with Docker, you can set things up
 - [Server readme](./server/README.md#dependencies)
 
 ## Certificates
+
 The project uses a tool called `mkcert` to install self-signed certificates to use in both the server and web projects. It's automatically installed during the `docker-run.sh` process, and marks these certificates as valid in your browser (tested by us with Firefox).
 
 If you want to run either of the projects independently, you'll need to run `create-certificate.sh` once to generate the required certificates first.
