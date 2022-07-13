@@ -7,4 +7,8 @@ class MockZettleCodeGrantExchanging : ZettleCodeGrantExchanging {
     override suspend fun exchange(codeGrant: String, state: String): Result<ZettleCodeGrantExchangeResponse> {
         return stubExchange!!
     }
+
+    override suspend fun exchangeRefreshToken(refreshToken: String): Result<ZettleCodeGrantExchangeResponse> {
+        return stubExchange!!
+    }
 }

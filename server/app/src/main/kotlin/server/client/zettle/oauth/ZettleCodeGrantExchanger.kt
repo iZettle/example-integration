@@ -49,4 +49,37 @@ class ZettleCodeGrantExchanger(
 
         return decoder.decode(responseBody)
     }
+
+    override suspend fun exchangeRefreshToken(
+        refreshToken: String
+    ): Result<ZettleCodeGrantExchangeResponse> {
+        val url = baseUrl.newBuilder()
+            .addPathSegments("token")
+            .build()
+        val requestBody = FormBody.Builder()
+            .add("grant_type", "refresh_token")
+            .add("refresh_token", refreshToken)
+            .add("client_secret", clientSecret)
+            .add("client_id", clientId)
+            .build()
+        val request = Request.Builder()
+            .url(url)
+            .post(requestBody)
+            .build()
+
+        val response = requestSending.send(request).getOrElse {
+            return Result.failure(it)
+        }
+
+        if (!response.isSuccessful) {
+            return Result.failure(RuntimeException("unexpected response code: ${response.code}"))
+        }
+
+        @Suppress("BlockingMethodInNonBlockingContext")
+        val responseBody = response.body?.string()
+            ?: return Result.failure(RuntimeException("expected a response body"))
+
+        return decoder.decode(responseBody)
+
+    }
 }
