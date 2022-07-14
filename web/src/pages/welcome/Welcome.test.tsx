@@ -9,7 +9,7 @@ import Welcome from "./Welcome";
 import TestWrapper from "../../testing/test-wrapper";
 import { User } from "../../data/user";
 
-const testUser: User = { organizationUuid: "foo", uuid: "bar" };
+const testUser: User = { organizationUuid: "foo", userUuid: "bar" };
 const serverMeEndpoint = "https://localhost:8001/v1/me";
 
 const server = setupServer();
@@ -79,7 +79,7 @@ test("renders user from request", async () => {
 
   await waitFor(() => {
     const orgIdElement = screen.getByText(/Org id: foo/i);
-    const uuidElement = screen.getByText(/Uuid: bar/i);
+    const uuidElement = screen.getByText(/User id: bar/i);
     expect(orgIdElement).toBeInTheDocument();
     expect(uuidElement).toBeInTheDocument();
   });

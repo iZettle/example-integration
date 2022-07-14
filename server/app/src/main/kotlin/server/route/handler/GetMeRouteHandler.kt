@@ -24,7 +24,7 @@ class GetMeRouteHandler(
 
     @Serializable
     private data class GetMeResponseBody(
-        @Serializable(with = UUIDSerializer::class) val uuid: UUID,
+        @Serializable(with = UUIDSerializer::class) val userUuid: UUID,
         @Serializable(with = UUIDSerializer::class) val organizationUuid: UUID
     )
 
@@ -49,7 +49,7 @@ class GetMeRouteHandler(
         }
 
         val stubbedResponseBody = GetMeResponseBody(
-            uuid = userResult.uuid,
+            userUuid = userResult.uuid,
             organizationUuid = userResult.organizationUuid
         )
         return call.respond(

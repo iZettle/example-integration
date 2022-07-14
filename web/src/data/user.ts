@@ -1,4 +1,4 @@
 export interface User {
-  uuid: string;
+  userUuid: string;
   organizationUuid: string;
 }
