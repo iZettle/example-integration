@@ -1,4 +1,4 @@
 export interface User {
-  displayName: string;
+  userUuid: string;
   organizationUuid: string;
 }

@@ -27,7 +27,7 @@ class GetMeRouteHandlerTests {
 
     @Serializable
     private data class ExpectedResponseBody(
-        val displayName: String,
+        @Serializable(with = UUIDSerializer::class) val uuid: UUID,
         @Serializable(with = UUIDSerializer::class) val organizationUuid: UUID
     )
 
@@ -59,7 +59,7 @@ class GetMeRouteHandlerTests {
         val responseContent = call.response.content ?: fail("expected a response body")
         val responseBody = Json.decodeFromString<ExpectedResponseBody>(responseContent)
         val expectedResponseBody = ExpectedResponseBody(
-            displayName = "0000",
+            uuid = uuidOne(),
             organizationUuid = uuidTwo()
         )
         assertEquals(HttpStatusCode.OK, call.response.status())
