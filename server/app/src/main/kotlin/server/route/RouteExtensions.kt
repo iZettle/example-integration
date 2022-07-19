@@ -1,9 +1,9 @@
 package server.route
 
-import io.ktor.application.ApplicationCall
-import io.ktor.application.call
-import io.ktor.routing.Route
-import io.ktor.routing.get
+import io.ktor.server.application.ApplicationCall
+import io.ktor.server.application.call
+import io.ktor.server.routing.Route
+import io.ktor.server.routing.get
 import io.ktor.util.pipeline.PipelineInterceptor
 
 fun Route.get(
