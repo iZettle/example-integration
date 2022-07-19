@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Heading, VStack } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 
 import "./Landing.css";
@@ -10,7 +10,7 @@ import useOAuth from "../../hooks/use-oauth";
 
 function Landing() {
   const user = useUser();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { generateCodeGrantUrl } = useOAuth();
 
   const onButtonClick = async () => {
@@ -20,7 +20,7 @@ function Landing() {
         if (result.error) {
           return Promise.reject(result.error);
         }
-        history.replace("/welcome");
+        navigate("/welcome");
       })
       .catch((e: AxiosError) => {
         if (e.response?.status === 401) {
