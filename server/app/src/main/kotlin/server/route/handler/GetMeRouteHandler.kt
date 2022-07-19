@@ -1,10 +1,10 @@
 package server.route.handler
 
-import io.ktor.application.ApplicationCall
+import io.ktor.server.application.ApplicationCall
 import io.ktor.http.HttpStatusCode
-import io.ktor.response.respond
-import io.ktor.sessions.get
-import io.ktor.sessions.sessions
+import io.ktor.server.response.respond
+import io.ktor.server.sessions.get
+import io.ktor.server.sessions.sessions
 import kotlinx.serialization.Serializable
 import server.client.http.NotAuthorisedException
 import server.client.http.UUIDSerializer
@@ -24,7 +24,7 @@ class GetMeRouteHandler(
 
     @Serializable
     private data class GetMeResponseBody(
-        val displayName: String,
+        @Serializable(with = UUIDSerializer::class) val userUuid: UUID,
         @Serializable(with = UUIDSerializer::class) val organizationUuid: UUID
     )
 
@@ -48,11 +48,8 @@ class GetMeRouteHandler(
             return call.respond(HttpStatusCode.InternalServerError)
         }
 
-        // todo: find out where backoffice gets user display name from
-        val displayName = userResult.uuid.toString().substring(0, 4)
-
         val stubbedResponseBody = GetMeResponseBody(
-            displayName = displayName,
+            userUuid = userResult.uuid,
             organizationUuid = userResult.organizationUuid
         )
         return call.respond(

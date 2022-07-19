@@ -10,7 +10,7 @@ import Landing from "./Landing";
 import TestWrapper from "../../testing/test-wrapper";
 import { User } from "../../data/user";
 
-const testUser: User = { organizationUuid: "foo", displayName: "bar" };
+const testUser: User = { organizationUuid: "foo", userUuid: "bar" };
 const serverMeEndpoint = "/v1/me";
 
 const server = setupServer(

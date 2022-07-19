@@ -1,11 +1,11 @@
 package server.route.handler
 
-import io.ktor.application.ApplicationCall
+import io.ktor.server.application.ApplicationCall
 import io.ktor.http.HttpStatusCode
-import io.ktor.response.respond
-import io.ktor.response.respondRedirect
-import io.ktor.sessions.sessions
-import io.ktor.sessions.set
+import io.ktor.server.response.respond
+import io.ktor.server.response.respondRedirect
+import io.ktor.server.sessions.sessions
+import io.ktor.server.sessions.set
 import server.client.zettle.oauth.ZettleCodeGrantExchanging
 import server.logger
 import server.oauth.OAuthStateStoring
