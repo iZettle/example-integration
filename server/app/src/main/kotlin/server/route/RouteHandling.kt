@@ -1,6 +1,6 @@
 package server.route
 
-import io.ktor.application.ApplicationCall
+import io.ktor.server.application.ApplicationCall
 
 interface RouteHandling {
 
