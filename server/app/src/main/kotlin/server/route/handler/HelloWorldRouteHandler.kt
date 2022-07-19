@@ -1,8 +1,8 @@
 package server.route.handler
 
-import io.ktor.application.ApplicationCall
+import io.ktor.server.application.ApplicationCall
 import io.ktor.http.ContentType
-import io.ktor.response.respondText
+import io.ktor.server.response.respondText
 import server.route.RouteHandling
 
 class HelloWorldRouteHandler : RouteHandling {

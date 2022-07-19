@@ -1,9 +1,9 @@
 package server.route.handler
 
-import io.ktor.application.ApplicationCall
+import io.ktor.server.application.ApplicationCall
 import io.ktor.http.HttpStatusCode
-import io.ktor.response.respond
-import io.ktor.response.respondRedirect
+import io.ktor.server.response.respond
+import io.ktor.server.response.respondRedirect
 import okhttp3.HttpUrl
 import server.logger
 import server.oauth.OAuthStateStoring

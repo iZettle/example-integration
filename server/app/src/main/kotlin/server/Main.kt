@@ -1,22 +1,22 @@
 package server
 
-import io.ktor.application.Application
-import io.ktor.application.install
-import io.ktor.features.CORS
-import io.ktor.features.CallLogging
-import io.ktor.features.ContentNegotiation
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
+import io.ktor.server.plugins.cors.routing.CORS
+import io.ktor.server.plugins.callloging.CallLogging
+import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.http.HttpHeaders
-import io.ktor.routing.routing
-import io.ktor.serialization.json
+import io.ktor.server.routing.routing
+import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.engine.applicationEngineEnvironment
 import io.ktor.server.engine.connector
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.engine.sslConnector
 import io.ktor.server.netty.Netty
 import io.ktor.server.netty.NettyApplicationEngine
-import io.ktor.sessions.SessionStorageMemory
-import io.ktor.sessions.Sessions
-import io.ktor.sessions.cookie
+import io.ktor.server.sessions.SessionStorageMemory
+import io.ktor.server.sessions.Sessions
+import io.ktor.server.sessions.cookie
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import org.slf4j.event.Level
 import server.client.http.JsonDecoder
@@ -55,9 +55,9 @@ fun Application.build() {
         cookie<KtorSessionCookie>("session", SessionStorageMemory())
     }
     install(CORS) {
-        header(HttpHeaders.Authorization)
+        allowHeader(HttpHeaders.Authorization)
         allowCredentials = true
-        host("localhost:3000", listOf("https"))
+        allowHost("localhost:3000", listOf("https"))
     }
 }
 
