@@ -28,7 +28,7 @@ dependencies {
     implementation("io.ktor:ktor-server-call-logging")
     implementation("io.ktor:ktor-network-tls-certificates")
     implementation("org.slf4j:slf4j-simple:1.7.36")
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
     implementation("com.squareup.okhttp3:okhttp")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
