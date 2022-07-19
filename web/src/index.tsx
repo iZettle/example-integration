@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -16,10 +16,10 @@ ReactDOM.render(
     <ChakraProvider>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Landing}></Route>
-            <Route path="/welcome" component={Welcome}></Route>
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Landing />}></Route>
+            <Route path="/welcome" element={<Welcome />}></Route>
+          </Routes>
         </BrowserRouter>
       </QueryClientProvider>
     </ChakraProvider>
