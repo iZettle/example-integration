@@ -12,7 +12,7 @@ updates:
       - "Lights On"
       - "Dependencies"
     reviewers:
-      - "iZettle/partner-growth"
+      - "iZettle/developer-experience-devs"
 
   - package-ecosystem: "npm"
     directory: "/web"
@@ -25,7 +25,7 @@ updates:
       - "Lights On"
       - "Dependencies"
     reviewers:
-      - "iZettle/partner-growth"
+      - "iZettle/developer-experience-devs"
 
   - package-ecosystem: "docker"
     directory: "/server"
@@ -38,7 +38,7 @@ updates:
       - "Lights On"
       - "Dependencies"
     reviewers:
-      - "iZettle/partner-growth"
+      - "iZettle/developer-experience-devs"
 
   - package-ecosystem: "docker"
     directory: "/web"
@@ -51,4 +51,4 @@ updates:
       - "Lights On"
       - "Dependencies"
     reviewers:
-      - "iZettle/partner-growth"
+      - "iZettle/developer-experience-devs"
