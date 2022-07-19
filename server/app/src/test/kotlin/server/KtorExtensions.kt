@@ -1,16 +1,15 @@
 package server
 
-import io.ktor.application.Application
-import io.ktor.application.call
-import io.ktor.routing.get
-import io.ktor.routing.routing
+import io.ktor.server.application.Application
+import io.ktor.server.application.call
+import io.ktor.server.routing.get
+import io.ktor.server.routing.routing
 import io.ktor.server.testing.TestApplicationCall
 import io.ktor.server.testing.TestApplicationRequest
 import io.ktor.server.testing.withTestApplication
-import io.ktor.sessions.sessions
-import io.ktor.sessions.set
+import io.ktor.server.sessions.sessions
+import io.ktor.server.sessions.set
 import server.route.RouteHandling
-import server.route.get
 import server.session.KtorSessionCookie
 
 fun runHandler(

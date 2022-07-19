@@ -1,10 +1,10 @@
 package server.route.handler
 
-import io.ktor.application.ApplicationCall
+import io.ktor.server.application.ApplicationCall
 import io.ktor.http.HttpStatusCode
-import io.ktor.response.respond
-import io.ktor.sessions.get
-import io.ktor.sessions.sessions
+import io.ktor.server.response.respond
+import io.ktor.server.sessions.get
+import io.ktor.server.sessions.sessions
 import kotlinx.serialization.Serializable
 import server.client.http.NotAuthorisedException
 import server.client.http.UUIDSerializer
