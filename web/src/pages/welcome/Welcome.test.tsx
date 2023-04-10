@@ -48,7 +48,7 @@ test("redirects when user request errors", async () => {
   );
 
   render(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <Welcome />
     </Router>,
     { wrapper: TestWrapper }
@@ -71,7 +71,7 @@ test("renders user from request", async () => {
   );
 
   render(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <Welcome />
     </Router>,
     { wrapper: TestWrapper }
