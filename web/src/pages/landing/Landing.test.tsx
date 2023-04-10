@@ -61,7 +61,7 @@ test("button click requests user data", async () => {
   const getSpy = jest.spyOn(axios, "get");
 
   render(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <Landing />
     </Router>,
     { wrapper: TestWrapper }
@@ -84,7 +84,7 @@ test("should start auth flow on 401", async () => {
       status: 401,
       data: null,
       statusText: "",
-      headers: null,
+      headers: {},
       config: {},
     },
   };
