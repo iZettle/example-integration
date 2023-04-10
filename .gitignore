@@ -14,5 +14,10 @@
 .env.test.local
 .env.production.local
 .cert
+-cert-file
+localhost.pem
 server/.cert
+server/app/bin
 web/.cert
+node_modules
+yarn.lock
